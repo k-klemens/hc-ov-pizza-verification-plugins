@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>at.kk.msc</groupId>
-    <artifactId>hc-ov-pizza-verification-plugins </artifactId>
+    <artifactId>hc-ov-pizza-verification-plugins</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>hc-ov-pizza-verification-plugins </name>
+    <name>hc-ov-pizza-verification-plugins</name>
     <description>Sample plugins working with the pizza ontoloy to perform a ontology restiriction verification</description>
 
     <properties>
@@ -32,6 +32,13 @@
             <version>3.22.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-arq</artifactId>
+            <version>4.4.0</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 

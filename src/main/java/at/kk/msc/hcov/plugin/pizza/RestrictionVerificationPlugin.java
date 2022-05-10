@@ -1,20 +1,19 @@
 package at.kk.msc.hcov.plugin.pizza;
 
+import at.kk.msc.hcov.plugin.pizza.util.RestrictionVerificationPluginUtil;
 import at.kk.msc.hcov.sdk.plugin.PluginConfigurationNotSetException;
 import at.kk.msc.hcov.sdk.verificationtask.IVerificationTaskPlugin;
 import at.kk.msc.hcov.sdk.verificationtask.model.ProvidedContext;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.Property;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,7 +23,30 @@ public class RestrictionVerificationPlugin implements IVerificationTaskPlugin {
 
   @Override
   public Function<OntModel, List<OntModel>> getElementExtractor() throws PluginConfigurationNotSetException {
-    throw new UnsupportedOperationException("Not yet implemented!");
+    return ontModel -> {
+      OntClass namedPizza = ontModel.getOntClass("http://www.co-ode.org/ontologies/pizza/pizza.owl#NamedPizza");
+      List<OntClass> pizzaClasses = namedPizza.listSubClasses().toList();
+      List<OntModel> returnModels = new ArrayList<>();
+      Property hasToppingsProperty = ontModel.getProperty("http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping");
+
+      for (OntClass pizzaClass : pizzaClasses) {
+        OntModel subOntology = ModelFactory.createOntologyModel();
+
+        OntClass namedPizzaInSubontology = subOntology.createClass(namedPizza.getURI());
+        OntClass pizzaClassInSubontology = subOntology.createClass(pizzaClass.getURI());
+        pizzaClassInSubontology.addSuperClass(namedPizzaInSubontology);
+
+        OntProperty hasToppingInSubontology = subOntology.createOntProperty(hasToppingsProperty.getURI());
+
+        RestrictionVerificationPluginUtil.copySomeValuesFromRestrictions(pizzaClass, subOntology, pizzaClassInSubontology,
+            hasToppingInSubontology);
+        RestrictionVerificationPluginUtil.copyAllValuesFromRestrictions(pizzaClass, subOntology, pizzaClassInSubontology,
+            hasToppingInSubontology);
+
+        returnModels.add(subOntology);
+      }
+      return returnModels;
+    };
   }
 
   @Override
