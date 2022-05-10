@@ -24,6 +24,14 @@ public class TestUtils {
     return ontModel;
   }
 
+  public static OntModel loadVenezianaOntology() throws FileNotFoundException {
+    OntModel ontModel = ModelFactory.createOntologyModel();
+
+    InputStream inputStream = new FileInputStream("src/test/resources/Veneziana.owl.xml");
+    ontModel.read(inputStream, Lang.RDFXML.getLabel());
+    return ontModel;
+  }
+
   public static void printRestrictionsOnPizza(List<OntModel> actual) {
     for (OntModel ontModel : actual) {
       System.out.println("----------------------");

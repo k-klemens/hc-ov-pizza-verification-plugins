@@ -1,11 +1,16 @@
 package at.kk.msc.hcov.plugin.pizza;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import at.kk.msc.hcov.plugin.pizza.util.TestUtils;
 import at.kk.msc.hcov.sdk.plugin.PluginConfigurationNotSetException;
+import at.kk.msc.hcov.sdk.verificationtask.model.ProvidedContext;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import org.apache.jena.ontology.OntModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,6 +51,47 @@ public class RestrictionVerificationPluginTest {
 
     //printing
     TestUtils.printRestrictionsOnPizza(actual);
+  }
+
+  @Test
+  public void testGetTemplateVariableValueResolver_requiredConfigurationNotSet_expectException() {
+    // given
+    Map<String, Object> givenConfiguration = new HashMap<>();
+    givenConfiguration.put("TEST_SOME_OTHER_KEY", 3);
+    target.setConfiguration(givenConfiguration);
+
+    // when - then
+    assertThatThrownBy(() -> target.getTemplateVariableValueResolver())
+        .isInstanceOf(PluginConfigurationNotSetException.class)
+        .hasMessageContaining("REPRESENTATION_MECHANISM");
+  }
+
+  @Test
+  public void testGetTemplateVariableValueResolver_worksCorrectly() throws FileNotFoundException, PluginConfigurationNotSetException {
+    // given
+    Map<String, Object> givenConfiguration = new HashMap<>();
+    givenConfiguration.put("REPRESENTATION_MECHANISM", "RECTOR");
+    target.setConfiguration(givenConfiguration);
+
+    OntModel givenVenezianaModel = TestUtils.loadVenezianaOntology();
+    ProvidedContext providedContext = new ProvidedContext(
+        UUID.randomUUID(),
+        "https://www.stockvault.net/data/2016/04/19/194159/preview16.jpg\"Veneziana\"Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, Tomato"
+    );
+
+    // when
+    Map<String, Object> actual = target.getTemplateVariableValueResolver().apply(givenVenezianaModel, providedContext);
+
+    // then
+    assertThat(actual)
+        .hasSize(4)
+        .containsEntry("imageURI", "https://www.stockvault.net/data/2016/04/19/194159/preview16.jpg")
+        .containsEntry("pizzaName", "Veneziana")
+        .containsEntry("ingredientList", "Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, Tomato")
+        .containsEntry("axiom",
+            "Veneziana pizzas have, amongst other things, some Caper topping, and some Mozzarella topping, and some Olive topping, " +
+                "and some Onion topping, and some Pine Kernels topping, and some Sultana topping, and some Tomato topping, and also only " +
+                "Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, and/or Tomato toppings.");
   }
 
 
