@@ -14,6 +14,9 @@ import java.util.UUID;
 import org.apache.jena.ontology.OntModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class RestrictionVerificationPluginTest {
 
@@ -67,7 +70,8 @@ public class RestrictionVerificationPluginTest {
   }
 
   @Test
-  public void testGetTemplateVariableValueResolver_worksCorrectly() throws FileNotFoundException, PluginConfigurationNotSetException {
+  public void testGetTemplateVariableValueResolver_rectorRepresentationWorksCorrectly()
+      throws FileNotFoundException, PluginConfigurationNotSetException {
     // given
     Map<String, Object> givenConfiguration = new HashMap<>();
     givenConfiguration.put("REPRESENTATION_MECHANISM", "RECTOR");
@@ -94,5 +98,118 @@ public class RestrictionVerificationPluginTest {
                 "Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, and/or Tomato toppings.");
   }
 
+  @Test
+  public void testGetTemplateVariableValueResolver_warrenRepresentationworksCorrectly()
+      throws FileNotFoundException, PluginConfigurationNotSetException {
+    // given
+    Map<String, Object> givenConfiguration = new HashMap<>();
+    givenConfiguration.put("REPRESENTATION_MECHANISM", "WARREN");
+    target.setConfiguration(givenConfiguration);
+
+    OntModel givenVenezianaModel = TestUtils.loadVenezianaOntology();
+    ProvidedContext providedContext = new ProvidedContext(
+        UUID.randomUUID(),
+        "https://www.stockvault.net/data/2016/04/19/194159/preview16.jpg\"Veneziana\"Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, Tomato"
+    );
+
+    // when
+    Map<String, Object> actual = target.getTemplateVariableValueResolver().apply(givenVenezianaModel, providedContext);
+
+    // then
+    assertThat(actual)
+        .hasSize(4)
+        .containsEntry("imageURI", "https://www.stockvault.net/data/2016/04/19/194159/preview16.jpg")
+        .containsEntry("pizzaName", "Veneziana")
+        .containsEntry("ingredientList", "Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, Tomato")
+        .containsEntry("axiom",
+            "Veneziana pizzas have, amongst other things, at least one Caper topping, and at least one Mozzarella topping, and at least one Olive topping, " +
+                "and at least one Onion topping, and at least one Pine Kernels topping, and at least one Sultana topping, and at least one Tomato topping, " +
+                "and also no other than Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, and/or Tomato toppings.");
+  }
+
+  @Test
+  public void testGetTemplateVariableValueResolver_onlySomeValuesFrom_warrenRepresentationworksCorrectly()
+      throws FileNotFoundException, PluginConfigurationNotSetException {
+    // given
+    Map<String, Object> givenConfiguration = new HashMap<>();
+    givenConfiguration.put("REPRESENTATION_MECHANISM", "WARREN");
+    target.setConfiguration(givenConfiguration);
+
+    OntModel givenVenezianaModel = TestUtils.loadVenezianaOntology_onlySomeValuesFrom();
+    ProvidedContext providedContext = new ProvidedContext(
+        UUID.randomUUID(),
+        "https://www.stockvault.net/data/2016/04/19/194159/preview16.jpg\"Veneziana\"Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, Tomato"
+    );
+
+    // when
+    Map<String, Object> actual = target.getTemplateVariableValueResolver().apply(givenVenezianaModel, providedContext);
+
+    // then
+    assertThat(actual)
+        .hasSize(4)
+        .containsEntry("imageURI", "https://www.stockvault.net/data/2016/04/19/194159/preview16.jpg")
+        .containsEntry("pizzaName", "Veneziana")
+        .containsEntry("ingredientList", "Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, Tomato")
+        .containsEntry("axiom",
+            "Veneziana pizzas have, amongst other things, at least one Caper topping, and at least one Mozzarella topping, and at least one Olive topping, " +
+                "and at least one Onion topping, and at least one Pine Kernels topping, and at least one Sultana topping, and at least one Tomato topping.");
+  }
+
+  @Test
+  public void testGetTemplateVariableValueResolver_onlyAllValuesFrom_warrenRepresentationworksCorrectly()
+      throws FileNotFoundException, PluginConfigurationNotSetException {
+    // given
+    Map<String, Object> givenConfiguration = new HashMap<>();
+    givenConfiguration.put("REPRESENTATION_MECHANISM", "WARREN");
+    target.setConfiguration(givenConfiguration);
+
+    OntModel givenVenezianaModel = TestUtils.loadVenezianaOntology_onlyAllValuesFrom();
+    ProvidedContext providedContext = new ProvidedContext(
+        UUID.randomUUID(),
+        "https://www.stockvault.net/data/2016/04/19/194159/preview16.jpg\"Veneziana\"Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, Tomato"
+    );
+
+    // when
+    Map<String, Object> actual = target.getTemplateVariableValueResolver().apply(givenVenezianaModel, providedContext);
+
+    // then
+    assertThat(actual)
+        .hasSize(4)
+        .containsEntry("imageURI", "https://www.stockvault.net/data/2016/04/19/194159/preview16.jpg")
+        .containsEntry("pizzaName", "Veneziana")
+        .containsEntry("ingredientList", "Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, Tomato")
+        .containsEntry("axiom",
+            "Veneziana pizzas have, amongst other things, no other than Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, and/or Tomato toppings.");
+  }
+
+  @Test
+  public void testGetTemplateVariableValueResolver_givenRepresentationNotKnown_expectException()
+      throws FileNotFoundException, PluginConfigurationNotSetException {
+    // given
+    Map<String, Object> givenConfiguration = new HashMap<>();
+    givenConfiguration.put("REPRESENTATION_MECHANISM", "NEW_REPRESENTATION");
+    target.setConfiguration(givenConfiguration);
+
+
+    // when - then
+    assertThatThrownBy(() -> target.getTemplateVariableValueResolver())
+        .isInstanceOf(PluginConfigurationNotSetException.class)
+        .hasMessageContaining("Given representation 'NEW_REPRESENTATION' mechanism not known!");
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"RESTRICTION_TASK_CREATOR", "restriction_task_creator", "rEsTrIcTiOn_tAsK_CrEaToR"})
+  public void testSupports_givenSupportedStrings(String givenString) {
+    // when - then
+    assertThat(target.supports(givenString)).isTrue();
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"RESTRICTION_TASK_CREATORS", "restriction_task_creatorx"})
+  @NullAndEmptySource
+  public void testSupports_givenUnsupportedStrings(String givenString) {
+    // when - then
+    assertThat(target.supports(givenString)).isFalse();
+  }
 
 }

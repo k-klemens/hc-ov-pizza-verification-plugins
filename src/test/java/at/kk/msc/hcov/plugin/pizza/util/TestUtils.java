@@ -32,6 +32,22 @@ public class TestUtils {
     return ontModel;
   }
 
+  public static OntModel loadVenezianaOntology_onlyAllValuesFrom() throws FileNotFoundException {
+    OntModel ontModel = ModelFactory.createOntologyModel();
+
+    InputStream inputStream = new FileInputStream("src/test/resources/Veneziana-WithoutSomeValuesFrom.owl.xml");
+    ontModel.read(inputStream, Lang.RDFXML.getLabel());
+    return ontModel;
+  }
+
+  public static OntModel loadVenezianaOntology_onlySomeValuesFrom() throws FileNotFoundException {
+    OntModel ontModel = ModelFactory.createOntologyModel();
+
+    InputStream inputStream = new FileInputStream("src/test/resources/Veneziana-WithoutAllValuesFrom.owl.xml");
+    ontModel.read(inputStream, Lang.RDFXML.getLabel());
+    return ontModel;
+  }
+
   public static void printRestrictionsOnPizza(List<OntModel> actual) {
     for (OntModel ontModel : actual) {
       System.out.println("----------------------");
