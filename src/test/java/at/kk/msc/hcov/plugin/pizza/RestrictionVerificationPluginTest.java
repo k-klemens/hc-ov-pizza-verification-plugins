@@ -243,10 +243,10 @@ public class RestrictionVerificationPluginTest {
     // then
     assertThat(actual)
         .isNotBlank()
-        .contains("<span th:text=\"${axiom}\"/>")
-        .contains("<img style=\"max-width: 100%\" width=\"150\" th:src=\"${imageURI}\"/>")
-        .contains("<h3 th:text=\"${pizzaName}\"/>")
-        .contains("<span th:text=\"${ingredientList}\"/>")
+        .contains("<span th:text='${axiom}'/>")
+        .contains("<img style='max-width: 100%' width='150' th:src='${imageURI}'/>")
+        .contains("<h3 th:text='${pizzaName}'/>")
+        .contains("<span th:text='${ingredientList}'/>")
         .containsIgnoringCase(givenRepresentation);
   }
 

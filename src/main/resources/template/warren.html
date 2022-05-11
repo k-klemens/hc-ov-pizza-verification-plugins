@@ -1,11 +1,11 @@
-<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<script src='https://assets.crowd.aws/crowd-html-elements.js'></script>
 
-<crowd-form answer-format="flatten-objects">
+<crowd-form answer-format='flatten-objects'>
 
     <br/>
-    <crowd-modal link-text="See Instructions" link-type="button">
+    <crowd-modal link-text='See Instructions' link-type='button'>
         <crowd-tabs>
-            <crowd-tab header="Summary">
+            <crowd-tab header='Summary'>
                 <h1><strong>Overview</strong></h1>
 
                 <p>
@@ -21,7 +21,7 @@
                     <li>If the model is invalid, select what defect it includes</li>
                 </ol>
             </crowd-tab>
-            <crowd-tab header="Detailed Instructions">
+            <crowd-tab header='Detailed Instructions'>
 
                 <h1><strong>Overview</strong></h1>
 
@@ -47,7 +47,7 @@
                     <li>Existential restrictions indicate that there must be a property of the specified type. Other types are not restricted.<br/>
                         Keyword in textual models: <strong>at least one</strong> <br/> <br/>
                         <ul>
-                            <li>For example : "PetLoverTypeB has, amongst other things, at least one Cat pets." - Every instance of PetLoverTypeB has a Cat pet
+                            <li>For example : 'PetLoverTypeB has, amongst other things, at least one Cat pets.' - Every instance of PetLoverTypeB has a Cat pet
                                 and may also have other pets.
                             </li>
                             <br/>
@@ -57,7 +57,7 @@
                         type but a property value does not have to exist.<br/>
                         Keyword in textual models: <strong>no other than</strong> <br/> <br/>
                         <ul>
-                            <li>For example: "PetLoverTypeA has, amongst other things, no other than Dog pets." - If instances of PetLoverTypeA have pets, the
+                            <li>For example: 'PetLoverTypeA has, amongst other things, no other than Dog pets.' - If instances of PetLoverTypeA have pets, the
                                 pets are always dogs. Instances of PetLoverTypeA, however, may not have any pets.
                             </li>
                         </ul>
@@ -72,39 +72,39 @@
                 </ul>
             </crowd-tab>
 
-            <crowd-tab header="Examples">
-                <table style="border: 1px solid lightgray; border-radius: 5px; -moz-border-radius: 5px;">
+            <crowd-tab header='Examples'>
+                <table style='border: 1px solid lightgray; border-radius: 5px; -moz-border-radius: 5px;'>
                     <tr>
-                        <td style="border-bottom: 1px solid lightgray; border-right: 1px solid lightgray; background-color: #f9fafb; padding: 5px;"><b>Correct
+                        <td style='border-bottom: 1px solid lightgray; border-right: 1px solid lightgray; background-color: #f9fafb; padding: 5px;'><b>Correct
                             Modeling</b></td>
-                        <td style="border-bottom: 1px solid lightgray; background-color: #f9fafb; padding: 5px;"><b>Incorrect Modeling</b></td>
+                        <td style='border-bottom: 1px solid lightgray; background-color: #f9fafb; padding: 5px;'><b>Incorrect Modeling</b></td>
                     </tr>
                     <tr>
-                        <td style="border-right: 1px solid lightgray;">
+                        <td style='border-right: 1px solid lightgray;'>
                             <center>
-                                <img style="max-width: 100%"
-                                     src="https://s3.eu-central-1.amazonaws.com/ontology.evaluation.restriction.images.mturksandbox.jobs/experiment.examples/menu/example.png"/>
+                                <img style='max-width: 100%'
+                                     src='https://s3.eu-central-1.amazonaws.com/ontology.evaluation.restriction.images.mturksandbox.jobs/experiment.examples/menu/example.png'/>
                             </center>
-                            <p style="color: green">
+                            <p style='color: green'>
                                 <br/><br/>
                                 Hawaii pizzas have, amongst other things, at least one Tomato topping, and at least one Ham topping, and at least one Pineapple
                                 topping, and at least one Mozzarella topping, and also no other than Tomato, Ham, Pineapple and/or Mozzarella
                                 toppings.<br/><br/>
                             </p>
                         </td>
-                        <td style="border-right: none;">
+                        <td style='border-right: none;'>
                             <center>
-                                <img style="max-width: 100%"
-                                     src="https://s3.eu-central-1.amazonaws.com/ontology.evaluation.restriction.images.mturksandbox.jobs/experiment.examples/menu/example.png"/>
+                                <img style='max-width: 100%'
+                                     src='https://s3.eu-central-1.amazonaws.com/ontology.evaluation.restriction.images.mturksandbox.jobs/experiment.examples/menu/example.png'/>
                             </center>
-                            <p style="color: red">
+                            <p style='color: red'>
                                 <br/><br/>
                                 Hawaii pizzas have, amongst other things, no other than Tomato, Ham, Pineapple and/or Mozzarella toppings.
                             </p>
                             The model does not represent the pizza menu item correctly as it allows for the possibility that Hawaii pizzas have no toppings at
                             all.
                             <br/><br/>
-                            <p style="color: red">
+                            <p style='color: red'>
                                 Hawaii pizzas have, amongst other things, at least one Tomato topping, and at least one Ham topping, and at least one Pineapple
                                 topping, and at least one Mozzarella topping.
                             </p>
@@ -131,50 +131,50 @@
 
 
     <center>
-        <table style="width:90%">
+        <table style='width:90%'>
             <tr>
-                <th style="border-bottom:2px solid black; border-right:2px solid black;">Pizza Menu</th>
-                <th style="border-bottom:2px solid black">Model</th>
+                <th style='border-bottom:2px solid black; border-right:2px solid black;'>Pizza Menu</th>
+                <th style='border-bottom:2px solid black'>Model</th>
             </tr>
             <tr>
                 <td>
                     <center>
-                        <div style="display: flex; flex-direction: row; justify-content: center">
-                            <img style="max-width: 100%" width="150" th:src="${imageURI}"/>
+                        <div style='display: flex; flex-direction: row; justify-content: center'>
+                            <img style='max-width: 100%' width='150' th:src='${imageURI}'/>
                             <!-- todo get the image url here -->
                             <div>
-                                <h3 th:text="${pizzaName}"/>
-                                <span th:text="${ingredientList}"/>
+                                <h3 th:text='${pizzaName}'/>
+                                <span th:text='${ingredientList}'/>
                             </div>
                         </div>
                     </center>
                 </td>
                 <td>
-                    <center id="axiom"><span th:text="${axiom}"/></center>
+                    <center id='axiom'><span th:text='${axiom}'/></center>
                 </td>
             </tr>
         </table>
     </center>
     <br/><br/><br/>Does the model represent the pizza menu item correctly ? </br></br>
 
-    <input type="radio" id="RC" name="verification" value="C">
-    <label id="correct" for="RC">The model correctly represents the menu item. </label> <br/>
-    <input type="radio" id="RD1" name="verification" value="D1" required>
-    <label id="D1" for="RD1">For the model to correctly represent the menu item, one or more existential (at least one) restrictions need to be added. </label>
+    <input type='radio' id='RC' name='verification' value='C'>
+    <label id='correct' for='RC'>The model correctly represents the menu item. </label> <br/>
+    <input type='radio' id='RD1' name='verification' value='D1' required>
+    <label id='D1' for='RD1'>For the model to correctly represent the menu item, one or more existential (at least one) restrictions need to be added. </label>
     <br/>
-    <input type="radio" id="RD3" name="verification" value="D3">
-    <label id="D3" for="RD3">For the model to correctly represent the menu item, one or more universal (no other than) restrictions need to be added.</label>
+    <input type='radio' id='RD3' name='verification' value='D3'>
+    <label id='D3' for='RD3'>For the model to correctly represent the menu item, one or more universal (no other than) restrictions need to be added.</label>
     <br/>
-    <input type="radio" id="RD2" name="verification" value="D2">
-    <label id="D2" for="RD2">For the model to correctly represent the menu item, one or more universal (no other than) restrictions need to be replaced by
+    <input type='radio' id='RD2' name='verification' value='D2'>
+    <label id='D2' for='RD2'>For the model to correctly represent the menu item, one or more universal (no other than) restrictions need to be replaced by
         existential (at least one) restrictions. </label> <br/>
-    <input type="radio" id="RD4" name="verification" value="D4">
-    <label id="D4" for="RD4">For the model to correctly represent the menu item, one or more existential (at least one) restrictions need to be replaced by
+    <input type='radio' id='RD4' name='verification' value='D4'>
+    <label id='D4' for='RD4'>For the model to correctly represent the menu item, one or more existential (at least one) restrictions need to be replaced by
         universal (no other than) restrictions.</label> <br/>
     <br/>
 
-    <label id="commentLabel" for="comment"> Comment (optional) </label> <br/>
-    <textarea rows="4" cols="60" name="comment" placeholder="In case you have any remarks please add them here"></textarea>
+    <label id='commentLabel' for='comment'> Comment (optional) </label> <br/>
+    <textarea rows='4' cols='60' name='comment' placeholder='In case you have any remarks please add them here'></textarea>
     <br/> <br/>
 
 
