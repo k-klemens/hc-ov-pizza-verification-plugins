@@ -61,8 +61,8 @@ public class RestrictionVerificationPlugin implements IVerificationTaskPlugin {
       OntClass currentPizzaModel = ontModel.getOntClass(namedPizzaUri).listSubClasses().next();
       String currentPizzaName = StringUtil.camelCaseToHumanReadable(currentPizzaModel.getLocalName());
 
-      List<String> allValuesFromStrings = OntologyElementsUtil.getAllValuesFromRestrictionsAsStrings(ontModel);
-      List<String> someValuesFromStrings = OntologyElementsUtil.getSomeValueFromRestrictionsAsStrings(ontModel);
+      List<String> allValuesFromStrings = OntologyElementsUtil.getAllValuesFromRestrictionsOfToppinsAsStrings(ontModel);
+      List<String> someValuesFromStrings = OntologyElementsUtil.getSomeValueFromRestrictionsOfToppingsAsStrings(ontModel);
 
       Map<String, Object> returnMap = new HashMap<>();
       addProvidedContext(providedContext, returnMap);

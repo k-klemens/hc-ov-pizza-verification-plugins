@@ -2,7 +2,15 @@ package at.kk.msc.hcov.plugin.pizza;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import at.kk.msc.hcov.plugin.pizza.util.TestUtils;
+import at.kk.msc.hcov.sdk.verificationtask.model.ProvidedContext;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+import org.apache.jena.ontology.OntModel;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -14,6 +22,25 @@ public class PizzaMenuContextProviderPluginTest {
   @BeforeEach
   void setUp() {
     target = new PizzaMenuContextProviderPlugin();
+  }
+
+  @Test
+  public void testProvideContextFor_extractsContextPropertly() throws FileNotFoundException {
+    // given
+    UUID givenUUID = UUID.fromString("dade8122-78a1-4632-ad10-b3b76343d462");
+    OntModel givenOntModel = TestUtils.loadVenezianaOntology();
+    Map<String, Object> givenConfiguration = new HashMap<>();
+
+    // when
+    ProvidedContext actual = target.provideContextFor(givenUUID, givenOntModel, givenConfiguration);
+
+    // then
+    assertThat(actual).isNotNull();
+    assertThat(actual.getExtractedElementsId()).isEqualTo(UUID.fromString("dade8122-78a1-4632-ad10-b3b76343d462"));
+    assertThat(actual.getContextString())
+        .isEqualTo(
+            "https://www.stockvault.net/data/2016/04/19/194159/preview16.jpg\"Veneziana\"Caper, Mozzarella, Olive, Onion, Pine Kernels, Sultana, Tomato"
+        );
   }
 
   @ParameterizedTest

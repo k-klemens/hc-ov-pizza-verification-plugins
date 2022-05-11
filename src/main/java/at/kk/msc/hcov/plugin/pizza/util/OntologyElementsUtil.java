@@ -10,17 +10,13 @@ import org.apache.jena.ontology.Restriction;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
 import org.apache.jena.ontology.UnionClass;
 import org.apache.jena.rdf.model.RDFList;
+import org.apache.jena.util.iterator.ExtendedIterator;
 
 public class OntologyElementsUtil {
   public static void copySomeValuesFromRestrictions(
       OntClass pizzaClass, OntModel subOntology, OntClass pizzaClassInSubontology, OntProperty hasToppingInSubontology
   ) {
-    pizzaClass.listSuperClasses()
-        .filterKeep(OntClass::isRestriction)
-        .mapWith(OntClass::asRestriction)
-        .filterKeep(restriction -> "hasTopping".equals(restriction.getOnProperty().getLocalName()))
-        .filterKeep(Restriction::isSomeValuesFromRestriction)
-        .mapWith(Restriction::asSomeValuesFromRestriction)
+    getSomeValuesFromRestrictionIterator(pizzaClass)
         .forEach(
             restriction -> {
               SomeValuesFromRestriction someValuesFromRestrictionInSubontology =
@@ -33,15 +29,19 @@ public class OntologyElementsUtil {
         );
   }
 
-  public static void copyAllValuesFromRestrictions(
-      OntClass pizzaClass, OntModel subOntology, OntClass pizzaClassInSubontology, OntProperty hasToppingInSubontology
-  ) {
-    pizzaClass.listSuperClasses()
+  private static ExtendedIterator<SomeValuesFromRestriction> getSomeValuesFromRestrictionIterator(OntClass pizzaClass) {
+    return pizzaClass.listSuperClasses()
         .filterKeep(OntClass::isRestriction)
         .mapWith(OntClass::asRestriction)
         .filterKeep(restriction -> "hasTopping".equals(restriction.getOnProperty().getLocalName()))
-        .filterKeep(Restriction::isAllValuesFromRestriction)
-        .mapWith(Restriction::asAllValuesFromRestriction)
+        .filterKeep(Restriction::isSomeValuesFromRestriction)
+        .mapWith(Restriction::asSomeValuesFromRestriction);
+  }
+
+  public static void copyAllValuesFromRestrictions(
+      OntClass pizzaClass, OntModel subOntology, OntClass pizzaClassInSubontology, OntProperty hasToppingInSubontology
+  ) {
+    getAllValuesFromRestrictionIterator(pizzaClass)
         .forEach(
             restriction -> {
               if (restriction.getAllValuesFrom().canAs(UnionClass.class)) {
@@ -70,9 +70,19 @@ public class OntologyElementsUtil {
         );
   }
 
-  public static List<String> getAllValuesFromRestrictionsAsStrings(OntModel ontModel) {
+  private static ExtendedIterator<AllValuesFromRestriction> getAllValuesFromRestrictionIterator(OntClass pizzaClass) {
+    return pizzaClass.listSuperClasses()
+        .filterKeep(OntClass::isRestriction)
+        .mapWith(OntClass::asRestriction)
+        .filterKeep(restriction -> "hasTopping".equals(restriction.getOnProperty().getLocalName()))
+        .filterKeep(Restriction::isAllValuesFromRestriction)
+        .mapWith(Restriction::asAllValuesFromRestriction);
+  }
+
+  public static List<String> getAllValuesFromRestrictionsOfToppinsAsStrings(OntModel ontModel) {
     return ontModel.listRestrictions()
         .filterKeep(Restriction::isAllValuesFromRestriction)
+        .filterKeep(restriction -> "hasTopping".equals(restriction.getOnProperty().getLocalName()))
         .mapWith(Restriction::asAllValuesFromRestriction)
         .mapWith(AllValuesFromRestriction::getAllValuesFrom)
         .mapWith(StringUtil::extractToppingName)
@@ -84,9 +94,10 @@ public class OntologyElementsUtil {
         .toList();
   }
 
-  public static List<String> getSomeValueFromRestrictionsAsStrings(OntModel ontModel) {
+  public static List<String> getSomeValueFromRestrictionsOfToppingsAsStrings(OntModel ontModel) {
     return ontModel.listRestrictions()
         .filterKeep(Restriction::isSomeValuesFromRestriction)
+        .filterKeep(restriction -> "hasTopping".equals(restriction.getOnProperty().getLocalName()))
         .mapWith(Restriction::asSomeValuesFromRestriction)
         .mapWith(SomeValuesFromRestriction::getSomeValuesFrom)
         .mapWith(StringUtil::extractToppingName)
