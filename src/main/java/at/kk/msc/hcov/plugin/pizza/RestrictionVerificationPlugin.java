@@ -2,6 +2,7 @@ package at.kk.msc.hcov.plugin.pizza;
 
 import at.kk.msc.hcov.plugin.pizza.representation.RepresentationRenderer;
 import at.kk.msc.hcov.plugin.pizza.util.OntologyElementsUtil;
+import at.kk.msc.hcov.plugin.pizza.util.ResourceFileLoader;
 import at.kk.msc.hcov.plugin.pizza.util.StringUtil;
 import at.kk.msc.hcov.sdk.plugin.PluginConfigurationNotSetException;
 import at.kk.msc.hcov.sdk.verificationtask.IVerificationTaskPlugin;
@@ -66,12 +67,15 @@ public class RestrictionVerificationPlugin implements IVerificationTaskPlugin {
       Map<String, Object> returnMap = new HashMap<>();
       addProvidedContext(providedContext, returnMap);
 
-      if (configuration.get("REPRESENTATION_MECHANISM").equals("RECTOR")) {
-        returnMap.put("axiom",
-            new RepresentationRenderer("RECTOR").renderString(currentPizzaName, someValuesFromStrings, allValuesFromStrings));
-      } else if (configuration.get("REPRESENTATION_MECHANISM").equals("WARREN")) {
-        returnMap.put("axiom",
-            new RepresentationRenderer("WARREN").renderString(currentPizzaName, someValuesFromStrings, allValuesFromStrings));
+      switch (configuration.get("REPRESENTATION_MECHANISM").toString()) {
+        case "RECTOR" -> returnMap.put(
+            "axiom",
+            new RepresentationRenderer("RECTOR").renderString(currentPizzaName, someValuesFromStrings, allValuesFromStrings)
+        );
+        case "WARREN" -> returnMap.put(
+            "axiom",
+            new RepresentationRenderer("WARREN").renderString(currentPizzaName, someValuesFromStrings, allValuesFromStrings)
+        );
       }
 
       return returnMap;
@@ -80,7 +84,12 @@ public class RestrictionVerificationPlugin implements IVerificationTaskPlugin {
 
   @Override
   public String getTemplate() throws PluginConfigurationNotSetException {
-    throw new UnsupportedOperationException("Not yet implemented!");
+    validateConfigurationSetOrThrow();
+    return switch (configuration.get("REPRESENTATION_MECHANISM").toString()) {
+      case "RECTOR" -> new ResourceFileLoader().loadFileAsString("/template/rector.html").replace("\n", "").replace("\r", "");
+      case "WARREN" -> new ResourceFileLoader().loadFileAsString("/template/warren.html").replace("\n", "").replace("\r", "");
+      default -> "";
+    };
   }
 
   @Override
@@ -98,6 +107,10 @@ public class RestrictionVerificationPlugin implements IVerificationTaskPlugin {
     IVerificationTaskPlugin.super.validateConfigurationSetOrThrow();
     if (!getConfiguration().containsKey("REPRESENTATION_MECHANISM")) {
       throw new PluginConfigurationNotSetException("Plugin configuration: REPRESENTATION_MECHANISM needs to be set!");
+    } else if (getConfiguration().get("REPRESENTATION_MECHANISM") == null) {
+      throw new PluginConfigurationNotSetException(
+          "Given representation 'null' mechanism not known!"
+      );
     } else if (
         !getConfiguration().get("REPRESENTATION_MECHANISM").equals("WARREN") &&
             !getConfiguration().get("REPRESENTATION_MECHANISM").equals("RECTOR")

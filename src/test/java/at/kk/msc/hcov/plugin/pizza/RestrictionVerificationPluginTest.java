@@ -212,4 +212,42 @@ public class RestrictionVerificationPluginTest {
     assertThat(target.supports(givenString)).isFalse();
   }
 
+  @ParameterizedTest
+  @ValueSource(strings = "MY_REPRESENTATION")
+  @NullAndEmptySource
+  public void testGetTemplate_givenRepresentationNotKnown(String givenRepresentation) {
+    // given
+    Map<String, Object> givenConfiguration = new HashMap<>();
+    givenConfiguration.put("REPRESENTATION_MECHANISM", givenRepresentation);
+    target.setConfiguration(givenConfiguration);
+
+
+    // when - then
+    assertThatThrownBy(() -> target.getTemplate())
+        .isInstanceOf(PluginConfigurationNotSetException.class)
+        .hasMessageContaining("Given representation '" + givenRepresentation + "' mechanism not known!");
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"RECTOR", "WARREN"})
+  public void testGetTemplate_templateIsNotEmpty(String givenRepresentation) throws PluginConfigurationNotSetException {
+    // given
+    Map<String, Object> givenConfiguration = new HashMap<>();
+    givenConfiguration.put("REPRESENTATION_MECHANISM", givenRepresentation);
+    target.setConfiguration(givenConfiguration);
+
+
+    // when
+    String actual = target.getTemplate();
+
+    // then
+    assertThat(actual)
+        .isNotBlank()
+        .contains("<span th:text=\"${axiom}\"/>")
+        .contains("<img style=\"max-width: 100%\" width=\"150\" th:src=\"${imageURI}\"/>")
+        .contains("<h3 th:text=\"${pizzaName}\"/>")
+        .contains("<span th:text=\"${ingredientList}\"/>")
+        .containsIgnoringCase(givenRepresentation);
+  }
+
 }
