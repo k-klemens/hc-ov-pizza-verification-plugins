@@ -21,6 +21,6 @@ public class PizzaMenuContextProviderPlugin implements IContextProviderPlugin {
 
   @Override
   public boolean supports(String s) {
-    throw new UnsupportedOperationException("Not yet implemented!");
+    return "PIZZA_MENU_CONTEXT_PROVIDER".equalsIgnoreCase(s);
   }
 }
