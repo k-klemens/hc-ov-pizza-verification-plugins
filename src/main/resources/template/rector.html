@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <script src='https://assets.crowd.aws/crowd-html-elements.js'></script>
 
 <crowd-form answer-format='flatten-objects'>
@@ -8,7 +9,8 @@
                 <h1><strong>Overview</strong></h1>
 
                 <p>
-                    In this job, you need to verify if a pizza menu item is correctly represented by a textual model represented in the Rector formalism.
+                    In this job, you need to verify if a pizza menu item is correctly represented by a textual model represented in the Rector
+                    formalism.
                     <br/>
                 </p>
                 <hr/>
@@ -24,7 +26,8 @@
                 <h1><strong>Overview</strong></h1>
 
                 <p>
-                    In this job, you need to verify if a pizza menu item is correctly represented by a textual model represented in the Rector formalism.
+                    In this job, you need to verify if a pizza menu item is correctly represented by a textual model represented in the Rector
+                    formalism.
                 </p>
                 <hr/>
                 <h1><strong>Steps</strong></h1>
@@ -46,19 +49,22 @@
                         Keyword in textual models: <strong>some</strong> <br/>
                         <br/>
                         <ul>
-                            <li>For example : 'PetLoverTypeB has, amongst other things, some Cat pets.' - Every instance of PetLoverTypeB has a Cat pet and may
+                            <li>For example : 'PetLoverTypeB has, amongst other things, some Cat pets.' - Every instance of PetLoverTypeB has a Cat pet
+                                and may
                                 also have other pets.
                             </li>
                             <br/>
                         </ul>
                     </li>
                     <li>
-                        Universal restrictions indicate that all property values for the specified property must be of a certain type. All values must be of the
+                        Universal restrictions indicate that all property values for the specified property must be of a certain type. All values must
+                        be of the
                         type but a property value does not have to exist.<br/>
                         Keyword in textual models: <strong>only</strong> <br/>
                         <br/>
                         <ul>
-                            <li>For example: 'PetLoverTypeA has, amongst other things, only Dog pets.' - If instances of PetLoverTypeA have pets, the pets are
+                            <li>For example: 'PetLoverTypeA has, amongst other things, only Dog pets.' - If instances of PetLoverTypeA have pets, the
+                                pets are
                                 always dogs. Instances of PetLoverTypeA, however, may not have any pets.
                             </li>
                         </ul>
@@ -88,7 +94,8 @@
                             </center>
                             <p style='color: green'>
                                 <br/><br/>
-                                Hawaii pizzas have, amongst other things, some Tomato topping, and some Ham topping, and some Pineapple topping, and some
+                                Hawaii pizzas have, amongst other things, some Tomato topping, and some Ham topping, and some Pineapple topping, and
+                                some
                                 Mozzarella topping, and also only Tomato, Ham, Pineapple and/or Mozzarella toppings.<br/><br/>
                             </p>
                         </td>
@@ -101,14 +108,17 @@
                                 <br/><br/>
                                 Hawaii pizzas have, amongst other things, only Tomato, Ham, Pineapple and/or Mozzarella toppings.
                             </p>
-                            The model does not represent the pizza menu item correctly as it allows for the possibility that Hawaii pizzas have no toppings at
+                            The model does not represent the pizza menu item correctly as it allows for the possibility that Hawaii pizzas have no
+                            toppings at
                             all.
                             <br/><br/>
                             <p style='color: red'>
-                                Hawaii pizzas have, amongst other things, some Tomato topping, and some Ham topping, and some Pineapple topping, and some
+                                Hawaii pizzas have, amongst other things, some Tomato topping, and some Ham topping, and some Pineapple topping, and
+                                some
                                 Mozzarella topping.
                             </p>
-                            The model does not represent the pizza menu item correctly as it allows for the possibility that Hawaii pizzas also have toppings
+                            The model does not represent the pizza menu item correctly as it allows for the possibility that Hawaii pizzas also have
+                            toppings
                             not listed on the menu.
                             <br/><br/>
                         </td>
@@ -156,18 +166,22 @@
     <input type='radio' id='RC' name='verification' value='C'>
     <label id='correct' for='RC'>The model correctly represents the menu item. </label> <br/>
     <input type='radio' id='RD1' name='verification' value='D1' required>
-    <label id='D1' for='RD1'>For the model to correctly represent the menu item, one or more existential (some) restrictions need to be added. </label> <br/>
+    <label id='D1' for='RD1'>For the model to correctly represent the menu item, one or more existential (some) restrictions need to be added. </label>
+    <br/>
     <input type='radio' id='RD3' name='verification' value='D3'>
-    <label id='D3' for='RD3'>For the model to correctly represent the menu item, one or more universal (only) restrictions need to be added.</label> <br/>
+    <label id='D3' for='RD3'>For the model to correctly represent the menu item, one or more universal (only) restrictions need to be added.</label>
+    <br/>
     <input type='radio' id='RD2' name='verification' value='D2'>
-    <label id='D2' for='RD2'>For the model to correctly represent the menu item, one or more universal (only) restrictions need to be replaced by existential
+    <label id='D2' for='RD2'>For the model to correctly represent the menu item, one or more universal (only) restrictions need to be replaced by
+        existential
         (some) restrictions. </label> <br/>
     <input type='radio' id='RD4' name='verification' value='D4'>
-    <label id='D4' for='RD4'>For the model to correctly represent the menu item, one or more existential (some) restrictions need to be replaced by universal
+    <label id='D4' for='RD4'>For the model to correctly represent the menu item, one or more existential (some) restrictions need to be replaced by
+        universal
         restrictions (only).</label> <br/>
     <br/>
     <label id='commentLabel' for='comment'> Comment (optional) </label> <br/>
-    <textarea rows='4' cols='60' name='comment' placeholder='In case you have any remarks please add them here'></textarea>
+    <textarea rows='4' cols='60' id="comment" name='comment' placeholder='In case you have any remarks please add them here'></textarea>
     <br/> <br/>
 </crowd-form>
 
@@ -213,4 +227,3 @@
         display: block;
     }
 </style>
-
