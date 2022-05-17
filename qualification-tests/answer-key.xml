@@ -1,5 +1,5 @@
 <AnswerKey xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/AnswerKey.xsd">
-    <!--Question>
+    <Question>
         <QuestionIdentifier>q-1-1</QuestionIdentifier>
         <AnswerOption>
             <SelectionIdentifier>4</SelectionIdentifier>
@@ -26,7 +26,7 @@
             <SelectionIdentifier>2</SelectionIdentifier>
             <AnswerScore>5</AnswerScore>
         </AnswerOption>
-    </Question-->
+    </Question>
     <Question>
         <QuestionIdentifier>q3</QuestionIdentifier>
         <AnswerOption>
@@ -77,5 +77,9 @@
         </AnswerOption>
     </Question>
 
-
+    <QualificationValueMapping>
+        <PercentageMapping>
+            <MaximumSummedScore>15</MaximumSummedScore>
+        </PercentageMapping>
+    </QualificationValueMapping>
 </AnswerKey>
