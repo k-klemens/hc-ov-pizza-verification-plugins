@@ -1,0 +1,523 @@
+<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2017-11-06/QuestionForm.xsd">
+    <Question>
+        <QuestionIdentifier>q-1-1</QuestionIdentifier>
+        <DisplayName>Q1.1</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <Title>Section 1: Little Knowledge - Q1.1</Title>
+            <Text>
+                This section tests your understanding of basic ontology components and the ability to recognise them in graphical and textual representations.
+                Consider the model, represented in Warren formalism and answer the following question.
+                Identify the main model components from the model
+            </Text>
+            <FormattedContent>
+                <![CDATA[
+                <table>
+                    <tr>
+                        <td>
+                            <center><b>Warren</b></center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>PersonTypeA has, amongst other things, at least one daughter, at least one son, and also no other than dog
+                    pets.</i></td>
+                    </tr>
+                </table>
+                <br/>
+                <b>How many named classes can you identify from the model?</b>
+                ]]>
+            </FormattedContent>
+
+        </QuestionContent>
+        <AnswerSpecification>
+            <FreeTextAnswer>
+                <Constraints>
+                    <IsNumeric/>
+                </Constraints>
+            </FreeTextAnswer>
+        </AnswerSpecification>
+    </Question>
+
+    <Question>
+        <QuestionIdentifier>q-1-2</QuestionIdentifier>
+        <DisplayName>Q1.2</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <Title>Section 1: Little Knowledge - Q1.2</Title>
+            <Text>
+                This section tests your understanding of basic ontology components and the ability to recognise them in graphical and textual representations.
+                Consider the model, represented in Warren formalism and answer the following question.
+                Identify the main model components from the model.
+            </Text>
+            <FormattedContent>
+                <![CDATA[
+                <table>
+                    <tr>
+                        <td>
+                            <center><b>Warren</b></center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>PersonTypeA has, amongst other things, at least one daughter, at least one son, and also no other than dog
+                    pets.</i></td>
+                    </tr>
+                </table>
+                <br/>
+                <b>How many relations can you identify from the model?</b>
+                ]]>
+            </FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <FreeTextAnswer>
+                <Constraints>
+                    <IsNumeric/>
+                </Constraints>
+            </FreeTextAnswer>
+        </AnswerSpecification>
+    </Question>
+
+    <Question>
+        <QuestionIdentifier>q-2-1</QuestionIdentifier>
+        <DisplayName>Q2.1</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <Title>Section 1: Little Knowledge - Q2.1</Title>
+            <Text>
+                This section tests your understanding of basic ontology components and the ability to recognise them in graphical and textual representations.
+                Consider the model, represented in Warren formalism and answer the following question.
+                Identifying the different quantifiers from the model.
+            </Text>
+            <FormattedContent>
+                <![CDATA[
+                <table>
+                    <tr>
+                        <td>
+                            <center><b>Warren</b></center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>PersonTypeA has, amongst other things, at least one daughter, at least one son, and also no other than dog
+                    pets.</i></td>
+                    </tr>
+                </table>
+                <br/>
+                <b>How many universal restrictions (owl:allValuesFrom) can you identify in the model?</b>
+                ]]>
+            </FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <FreeTextAnswer>
+                <Constraints>
+                    <IsNumeric/>
+                </Constraints>
+            </FreeTextAnswer>
+        </AnswerSpecification>
+    </Question>
+
+    <Question>
+        <QuestionIdentifier>q-2-2</QuestionIdentifier>
+        <DisplayName>Q2.2</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <Title>Section 1: Little Knowledge - Q2.2</Title>
+            <Text>
+                This section tests your understanding of basic ontology components and the ability to recognise them in graphical and textual representations.
+                Consider the model, represented in Warren formalism and answer the following question.
+                Identifying the different quantifiers from the model.
+            </Text>
+            <FormattedContent>
+                <![CDATA[
+                <table>
+                    <tr>
+                        <td>
+                            <center><b>Warren</b></center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>PersonTypeA has, amongst other things, at least one daughter, at least one son, and also no other than dog
+                    pets.</i></td>
+                    </tr>
+                </table>
+                <br/>
+                <b>How many existential restrictions (owl:someValuesFrom) can you identify in the model?</b>
+                ]]>
+            </FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <FreeTextAnswer>
+                <Constraints>
+                    <IsNumeric/>
+                </Constraints>
+            </FreeTextAnswer>
+        </AnswerSpecification>
+    </Question>
+
+
+    <Question>
+        <QuestionIdentifier>q3</QuestionIdentifier>
+        <DisplayName>Q3</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <Title>Section 2: Some Knowledge - Q3</Title>
+            <Text>
+                This section tests your understanding of the implications of ontology axioms and restrictions.
+                Consider the model, represented in Warren formalism and answer question 3 below.
+            </Text>
+            <FormattedContent>
+                <![CDATA[
+                <table>
+                    <tr>
+                        <td>
+                            <center><b>Warren</b></center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>PetLoverTypeA has, amongst other things, no other than Dog pets.</i></td>
+                    </tr>
+                </table>
+                <br/>
+                <b>Select the statement that describes instances of PetLoverTypeA correctly.</b>
+                ]]>
+            </FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>Q3A</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeA must have a Dog pet and cannot have other types of pets.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q3B</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeA might not have a Dog pet and cannot have other types of pets.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q3C</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeA must have a Dog pet and can also have other types of pets.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q3D</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeA might not have a Dog pet and can also have other types of pets.</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+
+
+    <Question>
+        <QuestionIdentifier>q4</QuestionIdentifier>
+        <DisplayName>Q4</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <Title>Section 2: Some Knowledge - Q4</Title>
+            <Text>
+                This section tests your understanding of the implications of ontology axioms and restrictions.
+                Consider the model, represented in Warren formalism and answer question 4 below.
+            </Text>
+            <FormattedContent>
+                <![CDATA[
+                <table>
+                    <tr>
+                        <td>
+                            <center><b>Warren</b></center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>PetLoverTypeB has, amongst other things, at least one Cat pet. </i></td>
+                    </tr>
+                </table>
+                <br/>
+                <b>Select the statement that describes instances of PetLoverTypeB correctly.</b>
+                ]]>
+            </FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>Q4A</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeB must have a Cat pet and cannot have other types of pets.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q4B</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeB might not have a Cat pet and cannot have other types of pets.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q4C</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeB must have a Cat pet and can also have other types of pets.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q4D</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeB might not have a Cat pet and can also have other types of pets.</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+
+    <Question>
+        <QuestionIdentifier>q5</QuestionIdentifier>
+        <DisplayName>Q5</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <Title>Section 2: Some Knowledge - Q5</Title>
+            <Text>
+                This section tests your understanding of the implications of ontology axioms and restrictions.
+                Consider the model, represented in Warren formalism and answer question 5 below.
+            </Text>
+            <FormattedContent>
+                <![CDATA[
+                <table>
+                    <tr>
+                        <td>
+                            <center><b>Warren</b></center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i>PetLoverTypeC has, amongst other things, no other than Cat pets and no other than Dog pets. There are no individuals that can be both of
+                        type Dog and type Cat.</i></td>
+                    </tr>
+                </table>
+                <br/>
+                <b>Select the statement that correctly represents instances of PetLoverTypeC.</b>
+                ]]>
+            </FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>Q5A</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeC must have 2 pets - a Dog and a Cat.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q5B</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeC might have 2 pets - a Dog and a Cat but also might not have any pets.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q5C</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeC cannot have any pets.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q5D</SelectionIdentifier>
+                        <Text>Instances of PetLoverTypeC could have 0 to n pets from type Cat or 0 to n pets from type Dog but not both.</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+
+    <Question>
+        <QuestionIdentifier>q6</QuestionIdentifier>
+        <DisplayName>Q6</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <Title>Section 3: Expert Knowledge - Q6</Title>
+            <Text>
+                This section tests your ability to reason with ontology models, as well as compare and relate them to each other.
+                Consider models A and B both describing PetLoverTypeE, each represented in Warren formalism and answer question 6
+                below.
+            </Text>
+            <FormattedContent>
+                <![CDATA[
+                <table>
+                    <tr>
+                        <th>Model A: PetLoverTypeE</th>
+                        <th>Model B: PetLoverTypeE</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i>PetLoverTypeE has, amongst other things, at least one Cat pet and at least one Dog pet and also no other than Cat and Dog pets.  </i>
+                        </td>
+                        <td>
+                            <i>PetLoverTypeE has, amongst other things, at least one Cat pet and at least one Dog pet.</i>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <b>Select the correct statement about models A and B describing PetLoverTypeE. </b>
+                ]]>
+            </FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>Q6A</SelectionIdentifier>
+                        <Text>Model A allows for instances of PetLoverTypeE to have a pet that is neither a Dog nor a Cat.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q6B</SelectionIdentifier>
+                        <Text>Model B allows for instances of PetLoverTypeE to have a pet that is neither a Dog nor a Cat.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q6C</SelectionIdentifier>
+                        <Text>None of the models allow for instances of PetLoverTypeE to have a pet that is neither a Dog nor a Cat.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q6D</SelectionIdentifier>
+                        <Text>Both models allow for instances of PetLoverTypeE to have a pet that is neither a Dog nor a Cat.</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+
+    <Question>
+        <QuestionIdentifier>q7</QuestionIdentifier>
+        <DisplayName>Q7</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <Title>Section 3: Expert Knowledge - Q7</Title>
+            <Text>
+                This section tests your ability to reason with ontology models, as well as compare and relate them to each other.
+                Consider models A and B describing PetLoverTypeD and PerLoverTypeF, each represented in Warren formalism and answer
+                question 7 below.
+            </Text>
+            <FormattedContent>
+                <![CDATA[
+                <table>
+                    <tr>
+                        <th>Model A: PetLoverTypeD</th>
+                        <th>Model B: PetLoverTypeF</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i>PetLoverTypeD has, amongst other things, at least one pet that is not a Dog.</i>
+                        </td>
+                        <td>
+                            <i> PetLoverTypeF has, amongst other things, no other than Dog pets.</i>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <b>Is it true that PetLoverTypeD is disjoint to PetLoverTypeF? That is, there can be no instance that is at the same time of type PetLoverTypeD
+                    and
+                    PetLoverTypeF. </b>
+                ]]>
+            </FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>Q7A</SelectionIdentifier>
+                        <Text>Yes</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q7B</SelectionIdentifier>
+                        <Text>No</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+
+    <Question>
+        <QuestionIdentifier>q8</QuestionIdentifier>
+        <DisplayName>Q8</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <Title>Section 3: Expert Knowledge - Q8</Title>
+            <Text>
+                This section tests your ability to reason with ontology models, as well as compare and relate them to each other.
+                Consider models A and B describing PetLoverTypeG and PerLoverTypeF, each represented in Warren formalism and answer
+                question 8 below.
+            </Text>
+            <FormattedContent>
+                <![CDATA[
+                <table>
+                    <tr>
+                        <th>Model A: PetLoverTypeG</th>
+                        <th>Model B: PetLoverTypeF</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i>PetLoverTypeG has, amongst other things, pets that are no other than not Dogs.</i>
+                        </td>
+                        <td>
+                            <i>PetLoverTypeF has, amongst other things, no other than Dog pets. </i>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <b>Is it true that PetLoverTypeG is disjoint to PetLoverTypeF? That is, there can be no instance that is at the same time of type PetLoverTypeG
+                    and
+                    PetLoverTypeF. </b>
+                ]]>
+            </FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>Q8A</SelectionIdentifier>
+                        <Text>Yes</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q8B</SelectionIdentifier>
+                        <Text>No</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+
+    <Question>
+        <QuestionIdentifier>q9</QuestionIdentifier>
+        <DisplayName>Q9</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <Title>Section 3: Expert Knowledge - Q9</Title>
+            <Text>
+                This section tests your ability to reason with ontology models, as well as compare and relate them to each other.
+                Consider models A and B describing PetLoverTypeD and PerLoverTypeH, each represented in Warren formalism and answer
+                question 9 below.
+            </Text>
+            <FormattedContent>
+                <![CDATA[
+                <table>
+                    <tr>
+                        <th>Model A: PetLoverTypeD</th>
+                        <th>Model B: PetLoverTypeH</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i>PetLoverTypeD has, amongst other things, at least one pet that is not a Dog.</i>
+                        </td>
+                        <td>
+                            <i>PetLoverTypeH has, amongst other things, at least one Dog pet.</i>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <b>Is it true that PetLoverTypeD is disjoint to PetLoverTypeH? That is, there can be no instance that is at the same time of type PetLoverTypeD
+                    and
+                    PetLoverTypeH. </b>
+                ]]>
+            </FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>Q9A</SelectionIdentifier>
+                        <Text>Yes</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q9B</SelectionIdentifier>
+                        <Text>No</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+</QuestionForm>
