@@ -3,28 +3,28 @@
         <QuestionIdentifier>q-1-1</QuestionIdentifier>
         <AnswerOption>
             <SelectionIdentifier>4</SelectionIdentifier>
-            <AnswerScore>5</AnswerScore>
+            <AnswerScore>0</AnswerScore>
         </AnswerOption>
     </Question>
     <Question>
         <QuestionIdentifier>q-1-2</QuestionIdentifier>
         <AnswerOption>
             <SelectionIdentifier>3</SelectionIdentifier>
-            <AnswerScore>5</AnswerScore>
+            <AnswerScore>0</AnswerScore>
         </AnswerOption>
     </Question>
     <Question>
         <QuestionIdentifier>q-2-1</QuestionIdentifier>
         <AnswerOption>
             <SelectionIdentifier>1</SelectionIdentifier>
-            <AnswerScore>5</AnswerScore>
+            <AnswerScore>0</AnswerScore>
         </AnswerOption>
     </Question>
     <Question>
         <QuestionIdentifier>q-2-2</QuestionIdentifier>
         <AnswerOption>
             <SelectionIdentifier>2</SelectionIdentifier>
-            <AnswerScore>5</AnswerScore>
+            <AnswerScore>0</AnswerScore>
         </AnswerOption>
     </Question>
     <Question>
@@ -79,7 +79,7 @@
 
     <QualificationValueMapping>
         <PercentageMapping>
-            <MaximumSummedScore>15</MaximumSummedScore>
+            <MaximumSummedScore>35</MaximumSummedScore>
         </PercentageMapping>
     </QualificationValueMapping>
 </AnswerKey>
