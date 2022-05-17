@@ -1,0 +1,390 @@
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<style>
+    table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 100%;
+        border: 1px solid black;
+    }
+
+    tr {
+        border: none;
+        width: 50%;
+        table-layout: fixed;
+    }
+
+    th {
+        border-top: none;
+        border-bottom: 1px solid black;
+        border-right: none;
+        border-left: none;
+    }
+
+    td {
+        border-right: solid 1px black;
+        border-left: solid 1px black;
+        border-bottom: solid 1px black;
+        width: 33%;
+    }
+
+    div#Section2 {
+        display: none;
+    }
+
+    div#Section3 {
+        display: none;
+    }
+
+    crowd-button {
+        display: none;
+    }
+
+    crowd-button#s1 {
+        display: block;
+    }
+
+    crowd-button#s2 {
+        display: block;
+    }
+
+    img {
+        display: block;
+    }
+</style>
+<h1>Qualification Test</h1>
+Make sure to accept the HIT before you start answering the questions.
+<crowd-form answer-format="flatten-objects">
+    <br/>
+    <br/>
+
+    <div id="Section1">
+        <h2>Section 1: Little Knowledge</h2>
+        <p>This section tests your understanding of basic ontology components and the ability to recognise them in graphical and textual representations.</p>
+        <b>Consider the model, represented in Rector formalism and answer questions 1 & 2 below.</b>
+        <br/>
+        <br/>
+
+        <table>
+            <tr>
+                <td style="border-bottom: none;">
+                    <center><b>Rector</b></center>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 80px;"><i>PersonTypeA has, amongst other things, some daughters, and some sons, and also only dog pets.</i></td>
+            </tr>
+        </table>
+        <br/>
+
+        <b>1. Identify the main model components from the model</b> <br/>
+        <br/>
+        <label for="Q1_1"> How many named classes can you identify from the model? </label>
+        <input type="number" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="Q1_1"
+               name="Q1_1" required/><br/>
+        <br/>
+
+        <label for="Q1_2"> How many relations can you identify from the model? </label>
+        <input type="number" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="Q1_2"
+               name="Q1_2" required/><br/>
+        <br/>
+
+        <b> 2. Identifying the different quantifiers from the model</b><br/>
+        <br/>
+
+        <label for="Q2_1"> How many universal restrictions (owl:allValuesFrom) can you identify in the model? </label>
+        <input type="number" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="Q2_1"
+               name="Q2_1" required/><br/>
+        <br/>
+        <label for="Q2_2"> How many existential restrictions (owl:someValuesFrom) can you identify in the model? </label>
+        <input type="number" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="Q2_2"
+               name="Q2_2" required/><br/>
+        <br/>
+        <crowd-button
+                id="s1"
+                onclick="
+if(document.getElementById('Q1_2').value == ''|| document.getElementById('Q1_1').value == ''|| document.getElementById('Q2_2').value == '' || document.getElementById('Q2_1').value == ''){
+alert('Please answer all questions to continue!'); return;
+}
+document.getElementById('Section2').style.display ='block';
+document.getElementById('Section1').style.display ='none';
+document.body.scrollTop = 0; document.documentElement.scrollTop = 0"
+        >
+            Continue to Section 2
+        </crowd-button>
+    </div>
+
+    <div id="Section2">
+        <h2>Section 2: Some Knowledge</h2>
+        <p>This section tests your understanding of the implications of ontology axioms and restrictions.</p>
+        <b>Consider the model, represented in Rector formalism and answer question 3 below.</b>
+        <br/>
+        <br/>
+        <table style="width: 100%; border: 1px solid black;">
+            <tr>
+                <td style="border-bottom: none;">
+                    <center><b>Rector</b></center>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 80px;">
+                    <i>PetLoverTypeA has, amongst other things, only Dog pets. </i>
+                </td>
+            </tr>
+        </table>
+
+        <br/>
+
+        3. Select the statement that describes instances of PetLoverTypeA correctly. <br/>
+        <br/>
+        <input type="radio" id="Q3A" name="Q3" value="A" required/>
+        <label for="Q3A">Instances of PetLoverTypeA must have a Dog pet and cannot have other types of pets.</label> <br/>
+        <input type="radio" id="Q3B" name="Q3" value="B"/>
+        <label for="Q3B">Instances of PetLoverTypeA might not have a Dog pet and cannot have other types of pets.</label> <br/>
+        <input type="radio" id="Q3C" name="Q3" value="C"/>
+        <label for="Q3C">Instances of PetLoverTypeA must have a Dog pet and can also have other types of pets.</label> <br/>
+        <input type="radio" id="Q3D" name="Q3" value="D"/>
+        <label for="Q3D">Instances of PetLoverTypeA might not have a Dog pet and can also have other types of pets. </label> <br/>
+        <br/>
+
+        <hr/>
+        <br/>
+        <b>Consider the model, represented in Rector formalism and answer question 4 below.</b>
+        <br/>
+        <br/>
+
+        <table>
+            <tr>
+                <td style="border-bottom: none;">
+                    <center><b>Rector</b></center>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 80px; border-bottom: 1px solid black;">
+                    <i>PetLoverTypeB has, amongst other things, some Cat pets. </i>
+                </td>
+            </tr>
+        </table>
+        <br/>
+
+        4. Select the statement that describes instances of PetLoverTypeB correctly. <br/>
+        <br/>
+        <input type="radio" id="Q4A" name="Q4" value="A" required/>
+        <label for="Q4A"> Instances of PetLoverTypeB must have a Cat pet and cannot have other types of pets.</label> <br/>
+        <input type="radio" id="Q4B" name="Q4" value="B"/>
+        <label for="Q4B"> Instances of PetLoverTypeB might not have a Cat pet and cannot have other types of pets. </label> <br/>
+        <input type="radio" id="Q4C" name="Q4" value="C"/>
+        <label for="Q4C"> Instances of PetLoverTypeB must have a Cat pet and can also have other types of pets. </label> <br/>
+        <input type="radio" id="Q4D" name="Q4" value="D"/>
+        <label for="Q4D">Instances of PetLoverTypeB might not have a Cat pet and can also have other types of pets. </label> <br/>
+        <br/>
+
+        <hr/>
+        <br/>
+
+        <b>Consider the model, represented in Rector formalism and answer question 5 below.</b>
+        <br/>
+        <br/>
+        <table>
+            <tr>
+                <td style="border-bottom: none;">
+                    <center><b>Rector</b></center>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 80px;">
+                    <i>PetLoverTypeC has, amongst other things, only Cat pets and only Dog pets. There are no individuals that can be both of type Dog and type
+                        Cat. </i>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <label for="Q5"> 5. Select the statement that correctly represents instances of PetLoverTypeC. </label>
+        <br/><br/>
+        <input type="radio" id="Q5A" name="Q5" value="A" required/>
+        <label for="Q5A"> Instances of PetLoverTypeC must have 2 pets - a Dog and a Cat.</label> <br/>
+        <input type="radio" id="Q5B" name="Q5" value="B"/>
+        <label for="Q5B"> Instances of PetLoverTypeC might have 2 pets - a Dog and a Cat but also might not have any pets.</label> <br/>
+        <input type="radio" id="Q5C" name="Q5" value="C"/>
+        <label for="Q5C"> Instances of PetLoverTypeC cannot have any pets. </label> <br/>
+        <input type="radio" id="Q5D" name="Q5" value="D"/>
+        <label for="Q5D">Instances of PetLoverTypeC could have 0 to n pets from type Cat or 0 to n pets from type Dog but not both.</label> <br/>
+        <br/>
+
+
+        <crowd-button
+                id="s1"
+                onclick="
+if(
+!(
+document.getElementById('Q3A').checked || document.getElementById('Q3B').checked
+|| document.getElementById('Q3C').checked
+|| document.getElementById('Q3D').checked
+)
+||!( document.getElementById('Q4A').checked
+|| document.getElementById('Q4B').checked
+|| document.getElementById('Q4C').checked
+|| document.getElementById('Q4D').checked
+)
+||!( document.getElementById('Q5A').checked
+|| document.getElementById('Q5B').checked
+|| document.getElementById('Q5C').checked
+|| document.getElementById('Q5D').checked
+)
+){alert('Please answer all questions to continue!');return;};
+
+document.getElementById('Section3').style.display ='block';
+document.getElementById('Section2').style.display ='none';
+document.getElementsByTagName('crowd-button')[2].style.display ='block'; document.body.scrollTop = 0; document.documentElement.scrollTop= 0;"
+        >
+            Continue to Section 3
+        </crowd-button>
+    </div>
+    <div id="Section3">
+        <h2>Section 3: Expert Knowledge</h2>
+        <p>This section tests your ability to reason with ontology models, as well as compare and relate them to each other.</p>
+
+        <b>Consider models A and B both describing PetLoverTypeE, each represented in Rector formalism and answer question 6
+            below.</b>
+        <br/>
+        <br/>
+        <table style="border-top: none; border-bottom: solid 1px black; border-right: none; border-left: none;">
+            <tr>
+                <th style="border-bottom: 1px solid black;">Model A: PetLoverTypeE</th>
+                <th style="border-bottom: 1px solid black;">Model B: PetLoverTypeE</th>
+            </tr>
+            <tr style="border-left: 1px solid black;">
+                <td style="border-left: 2px solid black;">
+                    <i>PetLoverTypeE has, amongst other things, some Cat pets and some Dog pets and also only Cat and Dog pets. </i>
+                </td>
+                <td>
+                    <i> PetLoverTypeE has, amongst other things, some Cat pets and some Dog pets.</i>
+                </td>
+            </tr>
+        </table>
+        <br/>
+
+        6. Select the correct statement about models A and B describing PetLoverTypeE. <br/>
+        <br/>
+        <input type="radio" id="Q6A" name="Q6" value="A" required/>
+        <label for="Q6A"> Model A allows for instances of PetLoverTypeE to have a pet that is neither a Dog nor a Cat.</label> <br/>
+        <input type="radio" id="Q6B" name="Q6" value="B"/>
+        <label for="Q6B"> Model B allows for instances of PetLoverTypeE to have a pet that is neither a Dog nor a Cat. </label> <br/>
+        <input type="radio" id="Q6C" name="Q6" value="C"/>
+        <label for="Q6C"> None of the models allow for instances of PetLoverTypeE to have a pet that is neither a Dog nor a Cat. </label> <br/>
+        <input type="radio" id="Q6D" name="Q6" value="D"/>
+        <label for="Q6D">Both models allow for instances of PetLoverTypeE to have a pet that is neither a Dog nor a Cat. </label> <br/>
+        <br/>
+        <hr/>
+        <br/>
+
+        <b>Consider models A and B describing PetLoverTypeD and PerLoverTypeF, each represented in Rector formalism and answer
+            question 7 below. </b>
+        <br/>
+        <br/>
+
+        <table style="border-top: none; border-bottom: solid 1px black; border-right: none; border-left: none;">
+            <tr>
+                <th>Model A: PetLoverTypeD</th>
+                <th>Model B: PerLoverTypeF</th>
+            </tr>
+            <tr>
+                <td style="border-left: 2px solid black;">
+                    <i>
+                        PetLoverTypeD has, amongst other things, some pets that are not Dogs.
+                    </i>
+                </td>
+                <td>
+                    <i>
+                        PetLoverTypeF has, amongst other things, only Dog pets.
+                    </i>
+                </td>
+            </tr>
+        </table>
+        <br/>
+
+        7. Is it true that PetLoverTypeD is disjoint to PetLoverTypeF? That is, there can be no instance that is at the same time of type PetLoverTypeD and
+        PetLoverTypeF. <br/>
+        <br/>
+        <input type="radio" id="Q7A" name="Q7" value="yes" required/>
+        <label for="Q7A">Yes</label> <br/>
+        <input type="radio" id="Q7B" name="Q7" value="no"/>
+        <label for="Q7B"> No </label> <br/>
+        <br/>
+
+        <hr/>
+        <br/>
+
+        <b>Consider models A and B describing PetLoverTypeG and PerLoverTypeF, each represented in Rector formalism and answer
+            question 8 below. </b>
+        <br/>
+        <br/>
+        <table style="border-top: none; border-bottom: solid 1px black; border-right: none; border-left: none;">
+            <tr>
+                <th>Model A: PetLoverTypeG</th>
+                <th>Model B: PerLoverTypeF</th>
+            </tr>
+            <tr style="border-left: 2px solid black;">
+                <td style="border-bottom: none;">
+                    <center><b>Rector</b></center>
+                </td>
+                <td style="border-bottom: none;">
+                    <center><b> Rector</b></center>
+                </td>
+            </tr>
+
+            <tr/>
+            <tr>
+                <td style="border-left: 2px solid black;"><i>PetLoverTypeG has, amongst other things, only pets that are not Dogs. </i></td>
+                <td><i>PetLoverTypeF has, amongst other things, only Dog pets.</i></td>
+            </tr>
+        </table>
+        <br/>
+
+        8. Is it true that PetLoverTypeG is disjoint to PetLoverTypeF? That is, there can be no instance that is at the same time of type PetLoverTypeG and
+        PetLoverTypeF. <br/>
+        <br/>
+        <input type="radio" id="Q7A" name="Q8" value="yes" required/>
+        <label for="Q7A">Yes</label> <br/>
+        <input type="radio" id="Q7B" name="Q8" value="no"/>
+        <label for="Q7B"> No </label> <br/>
+        <br/>
+        <hr/>
+        <br/>
+        <b>Consider models A and B describing PetLoverTypeD and PerLoverTypeH, each represented in Rector formalism and answer
+            question 9 below. </b>
+        <br/>
+        <br/>
+        <table style="border-top: none; border-bottom: solid 1px black; border-right: none; border-left: none;">
+            <tr>
+                <th>Model A: PetLoverTypeD</th>
+                <th>Model B: PerLoverTypeH</th>
+            </tr>
+            <tr style="border-left: 2px solid black;">
+                <td style="border-bottom: none;">
+                    <center><b>Rector</b></center>
+                </td>
+                <td style="border-bottom: none;">
+                    <center><b> Rector</b></center>
+                </td>
+            </tr>
+
+            <tr/>
+            <tr>
+                <td style="border-left: 2px solid black;"><i>PetLoverTypeD has, amongst other things, some pets that are not Dogs. </i></td>
+                <td><i>PetLoverTypeH has, amongst other things, some Dog pets.</i></td>
+            </tr>
+        </table>
+        <br/>
+
+        9. Is it true that PetLoverTypeD is disjoint to PetLoverTypeH? That is, there can be no instance that is at the same time of type PetLoverTypeD and
+        PetLoverTypeH. <br/>
+        <br/>
+        <input type="radio" id="Q7A" name="Q9" value="yes" required/>
+        <label for="Q7A">Yes</label> <br/>
+        <input type="radio" id="Q7B" name="Q9" value="no"/>
+        <label for="Q7B"> No </label> <br/>
+        <br/>
+    </div>
+</crowd-form>
+
+
