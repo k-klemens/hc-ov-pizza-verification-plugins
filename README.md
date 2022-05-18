@@ -1,7 +1,8 @@
 # hc-ov-pizza-verification-plugins
 
 This repository contains a implementation of the `IVerificationTaskPlugin` and `IContextProviderPlugin` plugins
-for [hc-ov-core](https://github.com/k-klemens/hc-ov-core) to replicate the human-centred ontology verification of [1] as closely as possible.
+for [hc-ov-core](https://github.com/k-klemens/hc-ov-core) to replicate the human-centred ontology verification of [1] as closely as possible. (for more
+information about the interfaces and the plugins see [hc-ov-sdk](https://github.com/k-klemens/hc-ov-sdk))
 
 Following functionality is provided by the plugins:
 
